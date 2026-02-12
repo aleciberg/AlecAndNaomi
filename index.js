@@ -3,7 +3,7 @@
 
   var IMAGE_EXT = /\.(jpe?g|JPE?G)$/;
 
-  var landscapeFilenames = ["1.JPG", "2.jpg", "3.jpg", "4.jpeg", "5.JPG"];
+  var landscapeFilenames = ["1.jpg", "2.JPG", "3.jpg", "4.jpeg", "5.JPG"];
 
   var portraitFilenames = ["1.jpg", "2.JPG", "3.jpeg", "4.jpeg", "5.JPG"];
 
@@ -27,6 +27,8 @@
   var imgB = document.querySelector(".carousel-image--b");
   var arrowLeft = document.querySelector(".arrow-left");
   var arrowRight = document.querySelector(".arrow-right");
+  var btnYes = document.querySelector(".btn-yes");
+  var btnNo = document.querySelector(".btn-no");
 
   var currentIndex = 0;
   var currentSet = landscapeImages;
@@ -94,8 +96,27 @@
     showCurrent();
   }
 
+  function onYesClick() {
+    if (typeof confetti !== "function") return;
+    confetti({
+      particleCount: 150,
+      spread: 70,
+      origin: { y: 0.6 },
+      colors: ["#e91e8c", "#f472b6", "#fbbf24", "#fff"],
+    });
+  }
+
+  function onNoClick() {
+    btnNo.classList.add("no-shake");
+    setTimeout(function () {
+      btnNo.classList.remove("no-shake");
+    }, 400);
+  }
+
   arrowLeft.addEventListener("click", goPrev);
   arrowRight.addEventListener("click", goNext);
+  btnYes.addEventListener("click", onYesClick);
+  btnNo.addEventListener("click", onNoClick);
   window.addEventListener("resize", onResizeOrOrientation);
   window.addEventListener("orientationchange", onResizeOrOrientation);
 
