@@ -1,0 +1,83 @@
+/* Reset / base: one screen, no scroll */
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+}
+
+.viewport {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.carousel-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  opacity: 0;
+  transition: opacity 0.8s ease-in-out;
+}
+
+.carousel-image.carousel-image--visible {
+  opacity: 1;
+}
+
+.valentine-text {
+  position: absolute;
+  left: 50%;
+  top: 16.67%;
+  transform: translate(-50%, -50%);
+  margin: 0;
+  font-family: "Dancing Script", cursive;
+  font-size: clamp(2rem, 8vw, 4rem);
+  font-weight: 600;
+  color: #e91e8c;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7), 0 4px 12px rgba(0, 0, 0, 0.6), 0 0 32px rgba(0, 0, 0, 0.5);
+  text-align: center;
+  padding: 0 1rem;
+  pointer-events: none;
+}
+
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  border: none;
+  background: rgba(255, 255, 255, 0.4);
+  color: #333;
+  font-size: 2rem;
+  line-height: 1;
+  cursor: pointer;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s, opacity 0.2s;
+  opacity: 0.6;
+}
+
+.arrow:hover {
+  background: rgba(255, 255, 255, 0.7);
+  opacity: 1;
+}
+
+.arrow:active {
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.arrow-left {
+  left: 16px;
+}
+
+.arrow-right {
+  right: 16px;
+}
